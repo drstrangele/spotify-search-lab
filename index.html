@@ -28,8 +28,15 @@
       <div class="col-md-6 col-md-offset-3">
         <h1 class="text-center">Spotify Search</h1>
         <form class="search">
-          <input type="text" value="Song Title">
-          <input type="submit" value="Search Songs">
+          <div class="search-box">
+            <input type="text" id="track" name="type" placeholder="Song Title" autofocus>
+          </div>
+          <div class="search-button">
+            <input type="submit" value="Search Songs">
+          </div>
+          <div class="text-center" id="loading">
+            <img src="images/loading.gif" width="80">
+          </div>
         <div id="results"></div>
       </form>
       </div>

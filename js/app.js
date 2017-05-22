@@ -6,19 +6,21 @@ $(document).on('ready', function() {
   var $spotifySearchButton = $('form.search');
   var $trackInput = $('input.track');
   var $results = $('#results');
+  var $loading = $('#loading')
 
   // spotify search button
   $spotifySearchButton.on('submit', function submitSearch(event) {
    event.preventDefault();
 
-   var query = $trackInput.val();
+  var query = $trackInput.val();
 
    if (query === "") {
      alert("Enter a keyword to search!");
      return;
    }
+  $results.empty();
+  $loading.show();
 
-  // set up ajax to search API
   $.ajax({
   method: 'GET',
   url: 'https://api.spotify.com/v1/search',
@@ -29,9 +31,9 @@ $(document).on('ready', function() {
   success: SpotifyData
 });
 
-function SpotifyData(data) {
-  console.log("received data:", data);
-  var trackResults = data.tracks.items;
+function SpotifyData(responseData) {
+  console.log(responseData);
+  var trackResults = responseData.tracks.items;
   console.log(trackResults);
 }
 
